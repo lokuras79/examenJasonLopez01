@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">examenJasonLopez</string>
+
+    <string name="CelciusFarengel">Celcius a Farengel</string>
+    <string name="FarengelCelcius">Farenge a lCelcius</string>
+
+    <string name="CelciusKelvin">Celcius a Kelvin</string>
+    <string name="KelvinCelcius">Kelvin a Celcius</string>
+
+    <string name="MetrosCentimetros">Metros a Centimetros</string>
+    <string name="CentimetrosMetros">Centimetros a Metros</string>
+
+    <string name="CentimetrosPulgadas">Centimetros a Pulgadas</string>
+    <string name="PulgadasCentimetros">Pulgadas a Centimetros</string>
+
+    <string name="Calcular">CALCULAR</string>
+
+    <string name="Numero">0000</string>
+    <string name="Numero1">0000</string>
+    <string name="Button">Guardar</string>
+
 </resources>

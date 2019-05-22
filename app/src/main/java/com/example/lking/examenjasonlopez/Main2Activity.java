@@ -1,77 +1,99 @@
 package com.example.lking.examenjasonlopez;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class Main2Activity extends AppCompatActivity {
 
-    public String TipoConversion="",Conversion;
+    private EditText et1;
+    public String TP="";
+    public String C;
     EditText Num;
-    TextView Resultado;
-    public double Numero,Total;
+    TextView Res;
+    public double Numero;
+    public double Total;
+    public Button Calcular;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        TipoConversion = getIntent().getStringExtra("Tipo_Conversion");
-        Conversion = getIntent().getStringExtra("Conver");
-        this.setTitle(TipoConversion);
+        TP = getIntent().getStringExtra("TP");
+        C = getIntent().getStringExtra("C");
+        this.setTitle(TP);
+        et1 = (EditText) findViewById(R.id.Numero);
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        et1.setText(preferences.getString("numero", ""));
+        Calcular = (Button) findViewById(R.id.Calcular);
+
+        Calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calcular(v);
+
+            }
+        });
+
+    }
+    public void Guardar(View view){
+    SharedPreferences preferences =getSharedPreferences("datos", Context.MODE_PRIVATE);
+    SharedPreferences.Editor Obj_editor = preferences.edit();
+        Obj_editor.putString("numero", et1.getText().toString());
+        Obj_editor.commit();
+        finish();
     }
     public void Calcular(View v){
         try{
-            Resultado=(TextView)findViewById(R.id.lbl_Total);
-            Num=(EditText)findViewById(R.id.txt_Numero);
+            Res=(TextView)findViewById(R.id.Resultado);
+            Num=(EditText)findViewById(R.id.Numero);
             Numero=Integer.parseInt(Num.getText().toString());
-            switch (Conversion){
-                case "1":
+            switch (C){
+                case "CelciusFarengel":
                     Total=(Numero*9/5)+32;
-                    Resultado.setText(Total+" F°");
+                    Res.setText(Total+"F");
                     break;
-                case "2":
+                case "FarengelCelcius":
                     Total=(Numero-32)*5/9;
-                    Resultado.setText(Total+" C°");
+                    Res.setText(Total+"C");
                     break;
-                case "3":
+                case "CelciusKelvin":
                     Total=Numero+273.15;
-                    Resultado.setText(Total+" K°");
+                    Res.setText(Total+"K");
                     break;
-                case "4":
+                case "KelvinCelcius":
                     Total=Numero-273.15;
-                    Resultado.setText(Total+" C°");
+                    Res.setText(Total+"C");
                     break;
-                case "5":
+                case "MetrosCentimetros":
                     Total=Numero*100;
-                    Resultado.setText(Total+" cm");
+                    Res.setText(Total+"cm");
                     break;
-                case "6":
+                case "CentimetrosMetros":
                     Total=Numero/100;
-                    Resultado.setText(Total+" m");
+                    Res.setText(Total+"m");
                     break;
-                case "7":
+                case "CentimetrosPulgadas":
                     Total=Numero/2.54;
-                    Resultado.setText(Total+" inch");
+                    Res.setText(Total+"in");
                     break;
-                case "8":
+                case "PulgadasCentimetros":
                     Total=Numero*2.54;
-                    Resultado.setText(Total+" cm");
+                    Res.setText(Total+"cm");
                     break;
             }
         }
         catch (Exception e){
-            Toast.makeText(getApplicationContext(),"No dejar el campo vacio",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"uPS Algo sucedio porfavor intente nuevamente",Toast.LENGTH_SHORT).show();
         }
-    }
-    public void Atras(View v){
-        CambiarVentana();
-    }
-    public void CambiarVentana(){
-        Intent Ventana=new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(Ventana);
-    }
 
+    }
 }

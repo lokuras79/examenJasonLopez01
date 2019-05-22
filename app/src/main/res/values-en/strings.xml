@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TestJasonLopez</string>
+
+    <string name="CelciusFarengel">Celsius to Fahrenheit</string>
+    <string name="FarengelCelcius">Fahrenheit to lCelsius</string>
+
+    <string name="CelciusKelvin">Celsius to Kelvin</string>
+    <string name="KelvinCelcius">Kelvin to Celsius</string>
+
+    <string name="MetrosCentimetros">Meter to Centimeter</string>
+    <string name="CentimetrosMetros">Centimeter to Meter</string>
+
+    <string name="CentimetrosPulgadas">Centimeter to Inch</string>
+    <string name="PulgadasCentimetros">Inch to Centimeter</string>
+
+    <string name="Calcular">CALCULATE</string>
+
+    <string name="Numero">0000</string>
+    <string name="Numero1">0000</string>
+    <string name="Button">Save</string>
+</resources>
